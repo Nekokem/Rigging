@@ -1,6 +1,6 @@
 //Maya ASCII 2018 scene
 //Name: 01-lamp_model rig.ma
-//Last modified: Mon, Feb 10, 2020 05:44:53 PM
+//Last modified: Tue, Feb 11, 2020 09:42:22 AM
 //Codeset: UTF-8
 requires maya "2018";
 currentUnit -l centimeter -a degree -t film;
@@ -13,8 +13,8 @@ fileInfo "license" "student";
 createNode transform -s -n "persp";
 	rename -uid "B1FA3E2D-49C2-1477-C333-ECB552D89E46";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 4.4213463644485804 17.429570456169653 75.779107772965915 ;
-	setAttr ".r" -type "double3" -3.9383527248020997 0.19999999999999685 1.0715801271681069e-16 ;
+	setAttr ".t" -type "double3" 1.0793017513718688 15.385865678773101 90.547279656525632 ;
+	setAttr ".r" -type "double3" -2.1383527248017198 -1.8000000000000078 -6.2150876328019093e-18 ;
 	setAttr ".rp" -type "double3" -1.7763568394002505e-15 6.6613381477509392e-16 0 ;
 	setAttr ".rpt" -type "double3" 1.0976689641259407e-16 1.7962877496168773e-17 9.6349631424517955e-17 ;
 createNode camera -s -n "perspShape" -p "persp";
@@ -23,7 +23,7 @@ createNode camera -s -n "perspShape" -p "persp";
 	setAttr ".rnd" no;
 	setAttr ".pze" yes;
 	setAttr ".fl" 21.795179595879176;
-	setAttr ".coi" 82.6179513367331;
+	setAttr ".coi" 97.306262418919943;
 	setAttr ".ow" 18.2553511835591;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
@@ -2477,7 +2477,7 @@ createNode parentConstraint -n "Lower_Arm_Jnt_parentConstraint1" -p "Lower_Arm_J
 	setAttr ".erp" yes;
 	setAttr ".tg[0].tot" -type "double3" 4.4408920985006262e-16 -4.4408920985006262e-16 
 		0 ;
-	setAttr ".lr" -type "double3" 0 0 6.3611093629270335e-15 ;
+	setAttr ".lr" -type "double3" 0 0 1.9083328088781101e-14 ;
 	setAttr ".rst" -type "double3" 2.8142035007476807 4.5727671562240584e-16 -0.0088141262531280518 ;
 	setAttr -k on ".w0";
 createNode joint -n "Upper_Arm_Jnt" -p "Lower_Arm_Jnt";
@@ -2507,7 +2507,7 @@ createNode parentConstraint -n "Upper_Arm_Jnt_parentConstraint1" -p "Upper_Arm_J
 	setAttr ".tg[0].tot" -type "double3" 5.2180482157382357e-15 -3.5527136788005009e-15 
 		-1.214306433183765e-17 ;
 	setAttr ".tg[0].tor" -type "double3" 0 0 -3.180554681463516e-15 ;
-	setAttr ".lr" -type "double3" 0 0 6.361109362927032e-15 ;
+	setAttr ".lr" -type "double3" 0 0 1.9083328088781101e-14 ;
 	setAttr ".rst" -type "double3" 15.244422176200356 3.1086244689504383e-15 1.6427831317500363e-15 ;
 	setAttr -k on ".w0";
 createNode scaleConstraint -n "Upper_Arm_Jnt_scaleConstraint1" -p "Upper_Arm_Jnt";
@@ -2665,22 +2665,22 @@ createNode nurbsCurve -n "Head_CnrtlShape" -p "Head_Cnrtl";
 		3.8896323265771233 3.8478772108856067 -4.6620518795278434
 		;
 createNode lightLinker -s -n "lightLinker1";
-	rename -uid "971AC6F4-2F45-8D11-A078-8C86517813D6";
+	rename -uid "43AAFFBD-3B41-07E7-14E0-3C80DBC452FE";
 	setAttr -s 2 ".lnk";
 	setAttr -s 2 ".slnk";
 createNode shapeEditorManager -n "shapeEditorManager";
-	rename -uid "30F2911D-D047-A4D6-2372-C797E1896891";
+	rename -uid "C4FE19A7-8243-5EE4-6952-9FA43ADEA9ED";
 createNode poseInterpolatorManager -n "poseInterpolatorManager";
-	rename -uid "D8157306-5F47-205A-71CE-FBAC7F568B3C";
+	rename -uid "E610B0B5-B241-91D1-4E4F-89B9C74EABF9";
 createNode displayLayerManager -n "layerManager";
-	rename -uid "C7F4CF30-5F46-95A6-8C7D-21B5670BCDAB";
+	rename -uid "32BFF22C-8946-DD9E-5EEE-1A934150E06B";
 	setAttr ".cdl" 1;
 	setAttr -s 3 ".dli[1:2]"  1 2;
 	setAttr -s 2 ".dli";
 createNode displayLayer -n "defaultLayer";
 	rename -uid "B0EE6848-4080-37C0-CD4C-868FF50F4486";
 createNode renderLayerManager -n "renderLayerManager";
-	rename -uid "C115872B-D349-859D-CD39-16BBD03D0570";
+	rename -uid "EC3D451B-634D-063A-D054-13831D5D9404";
 createNode renderLayer -n "defaultRenderLayer";
 	rename -uid "1E0D72A2-4E87-BAD7-4AC4-E3936B9314FC";
 	setAttr ".g" yes;
@@ -2793,6 +2793,8 @@ select -ne :defaultResolution;
 select -ne :hardwareRenderGlobals;
 	setAttr ".ctrs" 256;
 	setAttr ".btrs" 512;
+select -ne :ikSystem;
+	setAttr -s 4 ".sol";
 connectAttr "geo_layer.di" "base_geo.do";
 connectAttr "base_geo_parentConstraint1.crx" "base_geo.rx";
 connectAttr "base_geo_parentConstraint1.cry" "base_geo.ry";
