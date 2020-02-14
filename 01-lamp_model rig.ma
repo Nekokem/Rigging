@@ -1,6 +1,6 @@
 //Maya ASCII 2018 scene
 //Name: 01-lamp_model rig.ma
-//Last modified: Tue, Feb 11, 2020 09:42:22 AM
+//Last modified: Thu, Feb 13, 2020 04:41:42 PM
 //Codeset: UTF-8
 requires maya "2018";
 currentUnit -l centimeter -a degree -t film;
@@ -13,8 +13,8 @@ fileInfo "license" "student";
 createNode transform -s -n "persp";
 	rename -uid "B1FA3E2D-49C2-1477-C333-ECB552D89E46";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 1.0793017513718688 15.385865678773101 90.547279656525632 ;
-	setAttr ".r" -type "double3" -2.1383527248017198 -1.8000000000000078 -6.2150876328019093e-18 ;
+	setAttr ".t" -type "double3" -42.026180530573491 51.712187153580984 81.904251541339534 ;
+	setAttr ".r" -type "double3" -24.938352724842275 -29.400000000000691 9.1267913825139122e-16 ;
 	setAttr ".rp" -type "double3" -1.7763568394002505e-15 6.6613381477509392e-16 0 ;
 	setAttr ".rpt" -type "double3" 1.0976689641259407e-16 1.7962877496168773e-17 9.6349631424517955e-17 ;
 createNode camera -s -n "perspShape" -p "persp";
@@ -2575,8 +2575,37 @@ createNode scaleConstraint -n "Head_Jnt__scaleConstraint1" -p "Head_Jnt_";
 	setAttr -k on ".w0";
 createNode transform -n "Controls" -p "Lamp_from_base_up";
 	rename -uid "14114335-4B20-243F-171D-EAB1FD434BC7";
-createNode transform -n "Base_Cntrl_Grp" -p "Controls";
+createNode transform -n "Transform_ctrl_grp" -p "Controls";
+	rename -uid "B8B7D77E-E644-69BA-AB88-A5A333908C0B";
+createNode transform -n "Transform_ctrl" -p "Transform_ctrl_grp";
+	rename -uid "80288C42-2C44-B161-C39C-6DA9844FBA84";
+	setAttr ".s" -type "double3" 23.954574630077836 23.954574630077836 23.954574630077836 ;
+createNode nurbsCurve -n "Transform_ctrlShape" -p "Transform_ctrl";
+	rename -uid "8E2E5D1F-1040-ABBA-E119-22AC1F626BA7";
+	setAttr -k off ".v";
+	setAttr ".tw" yes;
+	setAttr -s 11 ".cp[0:10]" -type "double3" -0.44727960112917237 -2.2529402204533971e-17 
+		0.3458531431862728 -0.079346541242520705 0 -0.022079916700378233 0.28858651864413076 
+		-2.2529402204533959e-17 0.34585314318627314 -0.079346541242520496 -1.1686930820550809e-35 
+		-0.02207991670037826 0.28858651864413098 2.2529402204533947e-17 -0.39001297658702949 
+		-0.079346541242520705 0 -0.022079916700378233 -0.4472796011291717 2.2529402204533959e-17 
+		-0.39001297658702982 -0.079346541242520496 -1.1686930820556283e-35 -0.02207991670037826 
+		0 0 0 0 0 0 0 0 0;
+createNode transform -n "Cog_ctrl_grp" -p "Transform_ctrl";
+	rename -uid "6BEC5425-6749-1871-1BA5-BE9CCEDD1A67";
+	setAttr ".s" -type "double3" 0.041745679705970665 0.041745679705970665 0.041745679705970665 ;
+createNode transform -n "Cog_ctrl" -p "Cog_ctrl_grp";
+	rename -uid "813F8D20-8342-1D12-181D-54B369051336";
+	setAttr ".t" -type "double3" 0 -8.5103744958124978e-14 0 ;
+	setAttr ".rp" -type "double3" -1.3436012904148218 26.216136109710856 0.48437840536307453 ;
+	setAttr ".sp" -type "double3" -1.3436012904148242 26.216136109710845 0.48437840536307419 ;
+createNode nurbsCurve -n "Cog_ctrlShape" -p "Cog_ctrl";
+	rename -uid "0B57349B-1140-1642-C54C-39898A63B301";
+	setAttr -k off ".v";
+	setAttr ".tw" yes;
+createNode transform -n "Base_Cntrl_Grp" -p "Cog_ctrl";
 	rename -uid "6F31FDA6-4172-F29B-63C5-D49D93A88109";
+	setAttr ".t" -type "double3" 0 8.5103744958124978e-14 0 ;
 createNode transform -n "Base_Cnrtl" -p "Base_Cntrl_Grp";
 	rename -uid "9FA1C518-4247-CE32-CC26-C8A53F319B10";
 	setAttr ".t" -type "double3" -1.7654894193328738 0 0 ;
@@ -2665,22 +2694,22 @@ createNode nurbsCurve -n "Head_CnrtlShape" -p "Head_Cnrtl";
 		3.8896323265771233 3.8478772108856067 -4.6620518795278434
 		;
 createNode lightLinker -s -n "lightLinker1";
-	rename -uid "43AAFFBD-3B41-07E7-14E0-3C80DBC452FE";
+	rename -uid "3319856D-7D4D-EE30-1199-93ADF2F01CD9";
 	setAttr -s 2 ".lnk";
 	setAttr -s 2 ".slnk";
 createNode shapeEditorManager -n "shapeEditorManager";
-	rename -uid "C4FE19A7-8243-5EE4-6952-9FA43ADEA9ED";
+	rename -uid "5E1B5E62-8B45-787C-2720-64BE29C07A17";
 createNode poseInterpolatorManager -n "poseInterpolatorManager";
-	rename -uid "E610B0B5-B241-91D1-4E4F-89B9C74EABF9";
+	rename -uid "D48D855D-5A40-9008-A795-4584E36D8293";
 createNode displayLayerManager -n "layerManager";
-	rename -uid "32BFF22C-8946-DD9E-5EEE-1A934150E06B";
+	rename -uid "C3B5981E-8E46-8F91-0797-9391E0458467";
 	setAttr ".cdl" 1;
 	setAttr -s 3 ".dli[1:2]"  1 2;
 	setAttr -s 2 ".dli";
 createNode displayLayer -n "defaultLayer";
 	rename -uid "B0EE6848-4080-37C0-CD4C-868FF50F4486";
 createNode renderLayerManager -n "renderLayerManager";
-	rename -uid "EC3D451B-634D-063A-D054-13831D5D9404";
+	rename -uid "871D5683-DC48-B8CC-F1DA-109554B7F792";
 createNode renderLayer -n "defaultRenderLayer";
 	rename -uid "1E0D72A2-4E87-BAD7-4AC4-E3936B9314FC";
 	setAttr ".g" yes;
@@ -2761,6 +2790,16 @@ createNode transformGeometry -n "transformGeometry1";
 	rename -uid "2540FF6C-4DB1-48B5-4E59-90B7D849C7E1";
 	setAttr ".txf" -type "matrix" 12.979592858404045 0 0 0 0 12.979592858404045 0 0
 		 0 0 12.979592858404045 0 0 0 0 1;
+createNode makeNurbCircle -n "makeNurbCircle2";
+	rename -uid "04706195-E341-F38C-06DE-758DF2CA2688";
+	setAttr ".nr" -type "double3" 0 1 0 ;
+createNode makeNurbCircle -n "makeNurbCircle3";
+	rename -uid "B43244EB-3348-7EB8-7136-A3A69211357D";
+	setAttr ".nr" -type "double3" 0 1 0 ;
+createNode transformGeometry -n "transformGeometry2";
+	rename -uid "5D752BFD-2640-89D0-9C76-B7BA4E2392ED";
+	setAttr ".txf" -type "matrix" 9.2697220939198441 -5.3679728926383801 0 0 5.3679728926383801 9.2697220939198441 0 0
+		 0 0 10.711810336007922 0 -1.3436012904148242 26.216136109710845 0.48437840536307419 1;
 select -ne :time1;
 	setAttr ".o" 118;
 	setAttr ".unw" 118;
@@ -3043,6 +3082,8 @@ connectAttr "Head_Cnrtl.s" "Head_Jnt__scaleConstraint1.tg[0].ts";
 connectAttr "Head_Cnrtl.pm" "Head_Jnt__scaleConstraint1.tg[0].tpm";
 connectAttr "Head_Jnt__scaleConstraint1.w0" "Head_Jnt__scaleConstraint1.tg[0].tw"
 		;
+connectAttr "makeNurbCircle2.oc" "Transform_ctrlShape.cr";
+connectAttr "transformGeometry2.og" "Cog_ctrlShape.cr";
 connectAttr "transformGeometry1.og" "Base_CnrtlShape.cr";
 relationship "link" ":lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
 relationship "link" ":lightLinker1" ":initialParticleSE.message" ":defaultLightSet.message";
@@ -3058,6 +3099,7 @@ connectAttr "groupId27.id" "groupParts4.gi";
 connectAttr "upper_arm_geoShapeOrig.w" "groupParts7.ig";
 connectAttr "groupId30.id" "groupParts7.gi";
 connectAttr "makeNurbCircle1.oc" "transformGeometry1.ig";
+connectAttr "makeNurbCircle3.oc" "transformGeometry2.ig";
 connectAttr "defaultRenderLayer.msg" ":defaultRenderingList1.r" -na;
 connectAttr "head_geoShape.iog" ":initialShadingGroup.dsm" -na;
 connectAttr "base_geoShape.iog.og[0]" ":initialShadingGroup.dsm" -na;
