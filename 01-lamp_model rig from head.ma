@@ -1,6 +1,6 @@
 //Maya ASCII 2018 scene
 //Name: 01-lamp_model rig from head.ma
-//Last modified: Thu, Feb 13, 2020 04:06:30 PM
+//Last modified: Fri, Feb 14, 2020 07:23:23 PM
 //Codeset: UTF-8
 requires maya "2018";
 currentUnit -l centimeter -a degree -t film;
@@ -2478,6 +2478,31 @@ createNode scaleConstraint -n "Upper_Arm_Jnt_scaleConstraint1" -p "Upper_Arm_Jnt
 	setAttr -k off ".sz";
 	setAttr ".erp" yes;
 	setAttr -k on ".w0";
+createNode parentConstraint -n "Upper_Arm_Jnt_parentConstraint1" -p "Upper_Arm_Jnt";
+	rename -uid "85FA677A-8C46-3786-3F3F-ADA4BED2C4D0";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "UpperArm_ctrlW0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr ".t" -type "double3" -2.886579864025407e-15 7.1054273576010019e-15 0 ;
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr ".s" -type "double3" 0.99999999999999978 0.99999999999999978 1 ;
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" -4.9960036108132044e-15 -1.0658141036401503e-14 
+		1.7347234759768071e-18 ;
+	setAttr ".tg[0].tor" -type "double3" 7.5830332790935439e-22 -2.7084906463168605e-22 
+		1.2722218725854073e-14 ;
+	setAttr ".lr" -type "double3" -9.4787915988669299e-22 1.8957583197733855e-22 -6.361109362927032e-15 ;
+	setAttr ".rst" -type "double3" 0.01106852528883806 16.505183690742697 -2.3570126579663953e-10 ;
+	setAttr ".rsrr" -type "double3" -9.4787915988669299e-22 1.8957583197733855e-22 -6.361109362927032e-15 ;
+	setAttr -k on ".w0";
 createNode joint -n "Lower_Arm_Jnt" -p "Upper_Arm_Jnt";
 	rename -uid "DAB822E3-9945-46A8-5271-61BC03E85954";
 	setAttr -l on -k off ".v" no;
@@ -2722,49 +2747,23 @@ createNode nurbsCurve -n "Head_ctrlShape" -p "Head_ctrl";
 		4.4056315358312697 -1.5938759751696183 -4.5675814055666599
 		4.4056315358312688 -4.8236436943280792 -3.22976781297639
 		;
-createNode parentConstraint -n "Upper_Arm_Jnt_parentConstraint1" -p "Controls";
-	rename -uid "85FA677A-8C46-3786-3F3F-ADA4BED2C4D0";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "UpperArm_ctrlW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr ".t" -type "double3" 11.506676673889173 12.813643455505352 -0.0088141262531263951 ;
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr ".r" -type "double3" 0 0 140.31202720895425 ;
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr ".s" -type "double3" 1.0000000000000007 1.0000000000000004 1 ;
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".tg[0].tot" -type "double3" -4.9960036108132044e-15 -1.0658141036401503e-14 
-		1.7347234759768071e-18 ;
-	setAttr ".tg[0].tor" -type "double3" 7.5830332790935439e-22 -2.7084906463168605e-22 
-		1.2722218725854073e-14 ;
-	setAttr ".lr" -type "double3" -9.4787915988669299e-22 1.8957583197733855e-22 -6.361109362927032e-15 ;
-	setAttr ".rst" -type "double3" 0.01106852528883806 16.505183690742697 -2.3570126579663953e-10 ;
-	setAttr ".rsrr" -type "double3" -9.4787915988669299e-22 1.8957583197733855e-22 -6.361109362927032e-15 ;
-	setAttr -k on ".w0";
 createNode lightLinker -s -n "lightLinker1";
-	rename -uid "D3D2F65B-D140-BFE4-26AD-14842435C026";
+	rename -uid "482AE26F-7C4F-46A0-89C7-FEAC76417D6C";
 	setAttr -s 2 ".lnk";
 	setAttr -s 2 ".slnk";
 createNode shapeEditorManager -n "shapeEditorManager";
-	rename -uid "D12D10F6-4443-0F23-C983-DC91EEE5D5DA";
+	rename -uid "70A46BEB-4747-CEE8-B7C5-9F92307FB152";
 createNode poseInterpolatorManager -n "poseInterpolatorManager";
-	rename -uid "BB271015-DC40-35C9-538C-FA81DED79EB1";
+	rename -uid "5FEE39E4-6E4E-DAE4-40CD-0C807D627746";
 createNode displayLayerManager -n "layerManager";
-	rename -uid "49439EB0-554F-AF92-69AF-F79D85B99792";
+	rename -uid "395F7CA4-A84A-0527-B742-04B093A1B754";
 	setAttr ".cdl" 1;
 	setAttr -s 3 ".dli[1:2]"  1 2;
 	setAttr -s 2 ".dli";
 createNode displayLayer -n "defaultLayer";
 	rename -uid "B0EE6848-4080-37C0-CD4C-868FF50F4486";
 createNode renderLayerManager -n "renderLayerManager";
-	rename -uid "6F3869E4-EF4B-460D-C6E2-5CB2310E9EF2";
+	rename -uid "8F3C8FEA-8144-158D-F03E-6C8935A9DFE9";
 createNode renderLayer -n "defaultRenderLayer";
 	rename -uid "1E0D72A2-4E87-BAD7-4AC4-E3936B9314FC";
 	setAttr ".g" yes;
@@ -3060,6 +3059,20 @@ connectAttr "UpperArm_ctrl.s" "Upper_Arm_Jnt_scaleConstraint1.tg[0].ts";
 connectAttr "UpperArm_ctrl.pm" "Upper_Arm_Jnt_scaleConstraint1.tg[0].tpm";
 connectAttr "Upper_Arm_Jnt_scaleConstraint1.w0" "Upper_Arm_Jnt_scaleConstraint1.tg[0].tw"
 		;
+connectAttr "Upper_Arm_Jnt.ro" "Upper_Arm_Jnt_parentConstraint1.cro";
+connectAttr "Upper_Arm_Jnt.pim" "Upper_Arm_Jnt_parentConstraint1.cpim";
+connectAttr "Upper_Arm_Jnt.rp" "Upper_Arm_Jnt_parentConstraint1.crp";
+connectAttr "Upper_Arm_Jnt.rpt" "Upper_Arm_Jnt_parentConstraint1.crt";
+connectAttr "Upper_Arm_Jnt.jo" "Upper_Arm_Jnt_parentConstraint1.cjo";
+connectAttr "UpperArm_ctrl.t" "Upper_Arm_Jnt_parentConstraint1.tg[0].tt";
+connectAttr "UpperArm_ctrl.rp" "Upper_Arm_Jnt_parentConstraint1.tg[0].trp";
+connectAttr "UpperArm_ctrl.rpt" "Upper_Arm_Jnt_parentConstraint1.tg[0].trt";
+connectAttr "UpperArm_ctrl.r" "Upper_Arm_Jnt_parentConstraint1.tg[0].tr";
+connectAttr "UpperArm_ctrl.ro" "Upper_Arm_Jnt_parentConstraint1.tg[0].tro";
+connectAttr "UpperArm_ctrl.s" "Upper_Arm_Jnt_parentConstraint1.tg[0].ts";
+connectAttr "UpperArm_ctrl.pm" "Upper_Arm_Jnt_parentConstraint1.tg[0].tpm";
+connectAttr "Upper_Arm_Jnt_parentConstraint1.w0" "Upper_Arm_Jnt_parentConstraint1.tg[0].tw"
+		;
 connectAttr "Lower_Arm_Jnt_parentConstraint1.ctx" "Lower_Arm_Jnt.tx";
 connectAttr "Lower_Arm_Jnt_parentConstraint1.cty" "Lower_Arm_Jnt.ty";
 connectAttr "Lower_Arm_Jnt_parentConstraint1.ctz" "Lower_Arm_Jnt.tz";
@@ -3122,20 +3135,6 @@ connectAttr "Head_ctrl.pm" "Head_Jnt_scaleConstraint1.tg[0].tpm";
 connectAttr "Head_Jnt_scaleConstraint1.w0" "Head_Jnt_scaleConstraint1.tg[0].tw";
 connectAttr "transformGeometry2.og" "Transform_CtrlShape.cr";
 connectAttr "transformGeometry1.og" "Root_ctrlShape.cr";
-connectAttr "Upper_Arm_Jnt.ro" "Upper_Arm_Jnt_parentConstraint1.cro";
-connectAttr "Upper_Arm_Jnt.pim" "Upper_Arm_Jnt_parentConstraint1.cpim";
-connectAttr "Upper_Arm_Jnt.rp" "Upper_Arm_Jnt_parentConstraint1.crp";
-connectAttr "Upper_Arm_Jnt.rpt" "Upper_Arm_Jnt_parentConstraint1.crt";
-connectAttr "Upper_Arm_Jnt.jo" "Upper_Arm_Jnt_parentConstraint1.cjo";
-connectAttr "UpperArm_ctrl.t" "Upper_Arm_Jnt_parentConstraint1.tg[0].tt";
-connectAttr "UpperArm_ctrl.rp" "Upper_Arm_Jnt_parentConstraint1.tg[0].trp";
-connectAttr "UpperArm_ctrl.rpt" "Upper_Arm_Jnt_parentConstraint1.tg[0].trt";
-connectAttr "UpperArm_ctrl.r" "Upper_Arm_Jnt_parentConstraint1.tg[0].tr";
-connectAttr "UpperArm_ctrl.ro" "Upper_Arm_Jnt_parentConstraint1.tg[0].tro";
-connectAttr "UpperArm_ctrl.s" "Upper_Arm_Jnt_parentConstraint1.tg[0].ts";
-connectAttr "UpperArm_ctrl.pm" "Upper_Arm_Jnt_parentConstraint1.tg[0].tpm";
-connectAttr "Upper_Arm_Jnt_parentConstraint1.w0" "Upper_Arm_Jnt_parentConstraint1.tg[0].tw"
-		;
 relationship "link" ":lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
 relationship "link" ":lightLinker1" ":initialParticleSE.message" ":defaultLightSet.message";
 relationship "shadowLink" ":lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
