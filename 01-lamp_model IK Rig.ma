@@ -1,6 +1,6 @@
 //Maya ASCII 2018 scene
 //Name: 01-lamp_model IK Rig.ma
-//Last modified: Tue, Mar 10, 2020 03:44:32 PM
+//Last modified: Thu, Mar 12, 2020 09:55:42 AM
 //Codeset: UTF-8
 requires maya "2018";
 currentUnit -l centimeter -a degree -t film;
@@ -13,14 +13,14 @@ fileInfo "license" "student";
 createNode transform -s -n "persp";
 	rename -uid "B1FA3E2D-49C2-1477-C333-ECB552D89E46";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 41.973902142389989 76.152458299928739 102.41707770180628 ;
-	setAttr ".r" -type "double3" -33.338352724929749 20.599999999999962 -8.4945309567105248e-16 ;
+	setAttr ".t" -type "double3" -66.122166733237506 41.385259554009288 106.04227148550699 ;
+	setAttr ".r" -type "double3" -14.138352724929875 -31.799999999999994 -9.355753696051234e-16 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "3A3A9519-4606-A2EE-4319-C79D1945B5E0";
 	setAttr -k off ".v" no;
 	setAttr ".pze" yes;
 	setAttr ".fl" 34.999999999999993;
-	setAttr ".coi" 133.88250100360051;
+	setAttr ".coi" 133.88250100351564;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
